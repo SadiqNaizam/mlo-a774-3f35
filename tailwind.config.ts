@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from 'tailwindcss/defaultTheme'; // Added import for defaultTheme
 
 export default {
 	darkMode: ["class"],
@@ -52,6 +53,24 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// Alert specific colors
+				alertSuccess: {
+					DEFAULT: 'hsl(var(--alert-success-background))',
+					foreground: 'hsl(var(--alert-success-foreground))'
+				},
+				alertWarning: {
+					DEFAULT: 'hsl(var(--alert-warning-background))',
+					foreground: 'hsl(var(--alert-warning-foreground))'
+				},
+				alertError: {
+					DEFAULT: 'hsl(var(--alert-error-background))',
+					foreground: 'hsl(var(--alert-error-foreground))'
+				},
+				alertInfo: {
+					DEFAULT: 'hsl(var(--alert-info-background))',
+					foreground: 'hsl(var(--alert-info-foreground))'
+				},
+				// Sidebar colors (existing)
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -64,10 +83,14 @@ export default {
 				}
 			},
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				lg: 'var(--radius)', // Will now be 0.375rem (6px)
+				md: 'calc(var(--radius) - 2px)', // calc(6px - 2px) = 4px
+				sm: 'calc(var(--radius) - 4px)'  // calc(6px - 4px) = 2px
 			},
+			fontFamily: { // Added font family extension
+        sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
+        mono: ['var(--font-mono)', ...defaultTheme.fontFamily.mono],
+      },
 			keyframes: {
 				'accordion-down': {
 					from: {
